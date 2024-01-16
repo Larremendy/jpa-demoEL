@@ -49,14 +49,14 @@ public class PersonDAO {
         return query.getResultList();
     }
 
-    // ??? SOLUTION pour créer une liste de Person partiellement remplis
-    // à corriger
+    // Pour créer une liste de Person partiellement remplis
+    // SELECT new Person(p.firstName, p.lastName) FROM ...
     public static List<Person> findAllPersonsWithFirstName() {
         List<Person> persons = null;
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         try {
-            TypedQuery<Person> query = entityManager.createQuery("SELECT p.firstName FROM Person p", Person.class);
+            TypedQuery<Person> query = entityManager.createQuery("SELECT new Person(p.firstName, p.lastName) FROM Person p", Person.class);
             persons = query.getResultList();
         } catch (Exception e) {
             System.out.println("Erreur lors de la récupération des personnes");
@@ -64,6 +64,7 @@ public class PersonDAO {
 
         return persons;
     }
+
 
     public static void delete(Person person){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();

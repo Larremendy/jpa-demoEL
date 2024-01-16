@@ -33,11 +33,14 @@ public class App
         for(String name : names){
             System.out.println(name);
         }
+*/
 
-        List personsWithFirstName = PersonDAO.findAllPersonsWithFirstName();
-        for(Object p : personsWithFirstName){
-            System.out.println(p.getClass());
-        }*/
+        PersonDAO.save(new Person("Jean-Christophe", "Dominguez"));
+        PersonDAO.save(new Person("James", "Bond"));
+        List<Person> personsWithFirstName = PersonDAO.findAllPersonsWithFirstName();
+        for(Person p : personsWithFirstName){
+            System.out.println(p);
+        }
 
 /*
         Person person = PersonDAO.findById(2);
@@ -48,9 +51,10 @@ public class App
         person.setLastName("Hoffman");
         PersonDAO.update(person);*/
 
+        /*
         // Attention le update() va faire un INSERT SQL au lieu du UPDATE SQL
         // si on ne fournit pas un id existant.
         Person marie = new Person("Marie", "Dupont");
-        PersonDAO.update(marie);
+        PersonDAO.update(marie);*/
     }
 }
