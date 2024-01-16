@@ -137,4 +137,12 @@ public class PersonDAO {
         }
     }
 
+    public static List<Person> findByLastName(String lastName){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        Query query  = entityManager.createQuery("SELECT p FROM Person p WHERE p.lastName = :lastName");
+        query.setParameter("lastName", lastName);
+        return query.getResultList();
+    }
+
 }

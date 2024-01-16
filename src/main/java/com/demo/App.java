@@ -66,7 +66,14 @@ public class App
         /*
         PersonDAO.deleteById(1);*/
 
-        PersonDAO.deleteByIdV2(2);
+        //PersonDAO.deleteByIdV2(2);
+
+        PersonDAO.save(new Person("Jean-Christophe", "Dupont"));
+        PersonDAO.save(new Person("Charlie", "Dupont"));
+        PersonDAO.save(new Person("James", "Bond"));
+        List<Person> duponts = PersonDAO.findByLastName("Dupont");
+        for(Person p : duponts)
+            System.out.println(p);
 
     }
 }
