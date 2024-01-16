@@ -11,9 +11,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        /*
+/*
         Person jcd = new Person("Jean-Christophe", "Dominguez");
-        PersonDAO.save(jcd);*/
+        System.out.println(jcd);
+        PersonDAO.save(jcd);
+        // Hibernate a mis à jour automatiquement l'id de notre objet
+        System.out.println(jcd);*/
 
 /*
         Person person = PersonDAO.findById(2);
@@ -40,9 +43,14 @@ public class App
         Person person = PersonDAO.findById(2);
         PersonDAO.delete(person);*/
 
-
+/*
         Person person = PersonDAO.findById(1);
         person.setLastName("Hoffman");
-        PersonDAO.update(person);
+        PersonDAO.update(person);*/
+
+        // Attention le update() va faire un INSERT SQL au lieu du UPDATE SQL
+        // si on ne fournit pas un id existant.
+        Person marie = new Person("Marie", "Dupont");
+        PersonDAO.update(marie);
     }
 }
