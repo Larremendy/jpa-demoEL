@@ -10,9 +10,9 @@ public class PersonDAO {
 
     public static void save(Person person){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
-        EntityTransaction tx = entityManager.getTransaction();
 
-        try {
+       EntityTransaction tx = entityManager.getTransaction();
+       try {
             tx.begin();
             entityManager.persist(person);
             tx.commit();
@@ -20,6 +20,12 @@ public class PersonDAO {
             System.out.println("Erreur lors de l'enregistrement");
             tx.rollback();
         }
+    }
+
+    public static Person findById(Integer id){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        return entityManager.find(Person.class, id);
     }
 
 }
