@@ -40,6 +40,12 @@ public class PersonDAO {
         return query.getResultList();
     }
 
+    public static List<Person> findAllV2(){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+        Query query  = entityManager.createNativeQuery("SELECT * FROM persons", Person.class);
+        return query.getResultList();
+    }
+
     // avec le SELECT de JPQL on recupere une liste de String
     public static List<String> getNames(){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
@@ -51,7 +57,7 @@ public class PersonDAO {
 
     // Pour créer une liste de Person partiellement remplis
     // SELECT new Person(p.firstName, p.lastName) FROM ...
-    public static List<Person> findAllPersonsWithFirstName() {
+    public static List<Person> findAllPersonsPartial() {
         List<Person> persons = null;
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
@@ -64,6 +70,24 @@ public class PersonDAO {
 
         return persons;
     }
+
+    /* non terminé...
+    // Pour créer une liste de Person partiellement remplis
+    // SELECT new Person(p.firstName, p.lastName) FROM ...
+    public static Object[] findAllPersonsStrings() {
+
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        try {
+            TypedQuery query = entityManager.createQuery("SELECT p.firstName, p.lastName FROM Person p", Object[].class);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération des personnes");
+        }
+
+        return null;
+    }
+     */
 
 
     public static void delete(Person person){

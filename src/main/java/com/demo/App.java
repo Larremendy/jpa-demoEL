@@ -34,13 +34,13 @@ public class App
             System.out.println(name);
         }
 */
-
+/*
         PersonDAO.save(new Person("Jean-Christophe", "Dominguez"));
         PersonDAO.save(new Person("James", "Bond"));
-        List<Person> personsWithFirstName = PersonDAO.findAllPersonsWithFirstName();
+        List<Person> personsWithFirstName = PersonDAO.findAllPersonsPartial();
         for(Person p : personsWithFirstName){
             System.out.println(p);
-        }
+        }*/
 
 /*
         Person person = PersonDAO.findById(2);
@@ -56,5 +56,11 @@ public class App
         // si on ne fournit pas un id existant.
         Person marie = new Person("Marie", "Dupont");
         PersonDAO.update(marie);*/
+
+        List<Person> persons = PersonDAO.findAllV2();
+        for(Person p : persons){
+            System.out.println(p);
+        }
+
     }
 }
