@@ -36,8 +36,13 @@ public class App
             System.out.println(p.getClass());
         }*/
 
-
+/*
         Person person = PersonDAO.findById(2);
-        PersonDAO.delete(person);
+        PersonDAO.delete(person);*/
+
+
+        Person person = PersonDAO.findById(1);
+        person.setLastName("Hoffman");
+        PersonDAO.update(person);
     }
 }

@@ -78,4 +78,18 @@ public class PersonDAO {
         }
     }
 
+
+    public static void update(Person personToUpdate){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.merge(personToUpdate);
+            tx.commit();
+        }catch (Exception e){
+            System.out.println("Erreur lors de la modification");
+            tx.rollback();
+        }
+    }
+
 }
