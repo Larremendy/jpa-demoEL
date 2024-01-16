@@ -40,7 +40,6 @@ public class PersonDAO {
         return query.getResultList();
     }
 
-
     // avec le SELECT de JPQL on recupere une liste de String
     public static List<String> getNames(){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
@@ -64,6 +63,19 @@ public class PersonDAO {
         }
 
         return persons;
+    }
+
+    public static void delete(Person person){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.remove(person);
+            tx.commit();
+        }catch (Exception e){
+            System.out.println("Erreur lors de la suppression");
+            tx.rollback();
+        }
     }
 
 }

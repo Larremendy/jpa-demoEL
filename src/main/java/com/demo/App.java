@@ -19,6 +19,7 @@ public class App
         Person person = PersonDAO.findById(2);
         System.out.println(person);*/
 
+        /*
         List<Person> persons = PersonDAO.findAll();
         for(Person p : persons){
             System.out.println(p);
@@ -33,7 +34,10 @@ public class App
         List personsWithFirstName = PersonDAO.findAllPersonsWithFirstName();
         for(Object p : personsWithFirstName){
             System.out.println(p.getClass());
-        }
+        }*/
 
+
+        Person person = PersonDAO.findById(2);
+        PersonDAO.delete(person);
     }
 }
