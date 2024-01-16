@@ -57,10 +57,16 @@ public class App
         Person marie = new Person("Marie", "Dupont");
         PersonDAO.update(marie);*/
 
+        /*
         List<Person> persons = PersonDAO.findAllV2();
         for(Person p : persons){
             System.out.println(p);
-        }
+        }*/
+
+        /*
+        PersonDAO.deleteById(1);*/
+
+        PersonDAO.deleteByIdV2(2);
 
     }
 }

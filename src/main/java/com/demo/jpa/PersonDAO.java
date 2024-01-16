@@ -103,6 +103,26 @@ public class PersonDAO {
         }
     }
 
+    public static void deleteById(Integer id){
+        Person p = findById(id);
+        delete(p);
+    }
+
+    public static void deleteByIdV2(Integer id){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            Query query  = entityManager.createQuery("DELETE FROM Person p WHERE p.id = :id");
+            query.setParameter("id", id);
+            query.executeUpdate();
+            tx.commit();
+        }catch (Exception e){
+            System.out.println("Erreur lors de la modification");
+            tx.rollback();
+        }
+    }
+
 
     public static void update(Person personToUpdate){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
