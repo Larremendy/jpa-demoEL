@@ -10,8 +10,9 @@ import java.util.List;
 
 public class VoitureDAO {
 
+    private static EntityManager entityManager = EntityManagerSingleton.getEntityManager("tpvoiture");
+
     public static void save(Voiture a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
        EntityTransaction tx = entityManager.getTransaction();
        try {
@@ -25,13 +26,10 @@ public class VoitureDAO {
     }
 
     public static Voiture findById(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
-
         return entityManager.find(Voiture.class, id);
     }
 
     public static List<Voiture> findAll(){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         // JPQL : sorte de requete SQL mais avec les classes Java
         Query query  = entityManager.createQuery("SELECT a FROM Voiture a");// SELECT * FROM persons;
@@ -40,7 +38,6 @@ public class VoitureDAO {
 
 
     public static void delete(Voiture a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -53,7 +50,6 @@ public class VoitureDAO {
     }
 
     public static void deleteById(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -69,7 +65,6 @@ public class VoitureDAO {
 
 
     public static void update(Voiture a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();

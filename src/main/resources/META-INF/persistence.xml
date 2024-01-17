@@ -33,6 +33,11 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 
             <!-- ATTENTION : configuration mode écriture dans la database -->
+            <!-- validate : ne modifie la base de données, erreur si ne correspond pas -->
+            <!-- update : ajouter ce qui manque (colonne ou une table) -->
+            <!-- create : au démarrage : supprimer les tables pour les recréer -->
+            <!-- create-drop : supprimer les tables AVANT et APRES -->
+            <!-- drop : ??  -->
             <property name="hibernate.hbm2ddl.auto" value="validate" />
             <property name="hibernate.show_sql" value="true" />
         </properties>

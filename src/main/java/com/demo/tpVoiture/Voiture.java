@@ -14,6 +14,8 @@ public class Voiture {
     private String modele;
     @Column(name="annee_fabrication")
     private int anneeFabrication;
+    @Column(length = 2) // ce n'est pas une contrainte
+                        // mais une indication pour hibernate quand il crée la table
     private String immatriculation;
     private int kilometrage;
 
