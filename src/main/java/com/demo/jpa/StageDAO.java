@@ -22,13 +22,13 @@ public class StageDAO {
         }
     }
 
-    public static Address findById(Integer id){
+    public static Stage findById(Integer id){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
-        return entityManager.find(Address.class, id);
+        return entityManager.find(Stage.class, id);
     }
 
-    public static List<Address> findAll(){
+    public static List<Stage> findAll(){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         // JPQL : sorte de requete SQL mais avec les classes Java
@@ -37,7 +37,7 @@ public class StageDAO {
     }
 
 
-    public static void delete(Address a){
+    public static void delete(Stage a){
         EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {

@@ -21,7 +21,8 @@ public class PersonDAO {
             entityManager.persist(person);
             tx.commit();
         }catch (Exception e){
-            System.out.println("Erreur lors de l'enregistrement");
+            System.out.println("Erreur lors de l'enregistrement: ");
+           e.printStackTrace();
             tx.rollback();
         }
     }

@@ -6,6 +6,7 @@ import com.demo.jpa.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class AppTest
 {
@@ -49,4 +50,25 @@ public class AppTest
         StageDAO.save(java);
 
     }
+
+    @Test
+    public void testLectureStage(){
+
+        Stage stage = StageDAO.findById(2);
+        List<Person> participants = stage.getInterns();
+        for (Person p : participants){
+            System.out.println(p);
+        }
+
+    }
+
+    @Test
+    public void testNonCascade(){
+        Address address = new Address("rue de la Paix", "Paris", 13);
+
+        Person marie = new Person("Marie", "Dupont");
+        marie.setAddress(address);
+        PersonDAO.save(marie);
+    }
+
 }
