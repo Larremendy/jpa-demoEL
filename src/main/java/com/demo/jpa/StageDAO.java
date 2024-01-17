@@ -7,9 +7,9 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class StageDAO {
+    private static EntityManager entityManager = EntityManagerSingleton.getEntityManager("demojpa");
 
     public static void save(Stage a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
        EntityTransaction tx = entityManager.getTransaction();
        try {
@@ -23,13 +23,11 @@ public class StageDAO {
     }
 
     public static Stage findById(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         return entityManager.find(Stage.class, id);
     }
 
     public static List<Stage> findAll(){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         // JPQL : sorte de requete SQL mais avec les classes Java
         Query query  = entityManager.createQuery("SELECT a FROM Stage a");// SELECT * FROM persons;
@@ -38,7 +36,7 @@ public class StageDAO {
 
 
     public static void delete(Stage a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -51,7 +49,6 @@ public class StageDAO {
     }
 
     public static void deleteById(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -67,7 +64,7 @@ public class StageDAO {
 
 
     public static void update(Stage a){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();

@@ -1,17 +1,17 @@
-package com.demo.jpa;
+package com.demo.tpVoiture;
 
+import com.demo.jpa.Address;
+import com.demo.jpa.EntityManagerSingleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class AddressDAO {
+public class VoitureDAO {
 
-    private static EntityManager entityManager = EntityManagerSingleton.getEntityManager("demojpa");
-
-
-    public static void save(Address a){
+    public static void save(Voiture a){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
        EntityTransaction tx = entityManager.getTransaction();
        try {
@@ -24,18 +24,23 @@ public class AddressDAO {
         }
     }
 
-    public static Address findById(Integer id){
-        return entityManager.find(Address.class, id);
+    public static Voiture findById(Integer id){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
+        return entityManager.find(Voiture.class, id);
     }
 
-    public static List<Address> findAll(){
+    public static List<Voiture> findAll(){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
+
         // JPQL : sorte de requete SQL mais avec les classes Java
-        Query query  = entityManager.createQuery("SELECT a FROM Address a");// SELECT * FROM persons;
+        Query query  = entityManager.createQuery("SELECT a FROM Voiture a");// SELECT * FROM persons;
         return query.getResultList();
     }
 
 
-    public static void delete(Address a){
+    public static void delete(Voiture a){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -48,10 +53,11 @@ public class AddressDAO {
     }
 
     public static void deleteById(Integer id){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            Query query  = entityManager.createQuery("DELETE FROM Address a WHERE a.id = :id");
+            Query query  = entityManager.createQuery("DELETE FROM Voiture a WHERE a.id = :id");
             query.setParameter("id", id);
             query.executeUpdate();
             tx.commit();
@@ -62,7 +68,8 @@ public class AddressDAO {
     }
 
 
-    public static void update(Address a){
+    public static void update(Voiture a){
+        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();

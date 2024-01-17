@@ -71,4 +71,9 @@ public class AppTest
         PersonDAO.save(marie);
     }
 
+    @Test
+    public void testVoiture(){
+
+    }
+
 }

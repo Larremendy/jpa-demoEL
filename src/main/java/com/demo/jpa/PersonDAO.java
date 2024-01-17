@@ -9,11 +9,12 @@ import java.util.List;
 
 public class PersonDAO {
 
+    private static EntityManager entityManager = EntityManagerSingleton.getEntityManager("demojpa");
+
     // objectif du DAO (Database Access Object)
     // implémenter les opérations de base de type CRUD
 
     public static void save(Person person){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
        EntityTransaction tx = entityManager.getTransaction();
        try {
@@ -28,13 +29,11 @@ public class PersonDAO {
     }
 
     public static Person findById(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         return entityManager.find(Person.class, id);
     }
 
     public static List<Person> findAll(){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         // JPQL : sorte de requete SQL mais avec les classes Java
         Query query  = entityManager.createQuery("SELECT p FROM Person p");// SELECT * FROM persons;
@@ -42,14 +41,12 @@ public class PersonDAO {
     }
 
     public static List<Person> findAllV2(){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         Query query  = entityManager.createNativeQuery("SELECT * FROM persons", Person.class);
         return query.getResultList();
     }
 
     // avec le SELECT de JPQL on recupere une liste de String
     public static List<String> getNames(){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         // JPQL : sorte de requete SQL mais avec les classes Java
         Query query  = entityManager.createQuery("SELECT p.lastName FROM Person p");// SELECT * FROM persons;
@@ -60,7 +57,6 @@ public class PersonDAO {
     // SELECT new Person(p.firstName, p.lastName) FROM ...
     public static List<Person> findAllPersonsPartial() {
         List<Person> persons = null;
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         try {
             TypedQuery<Person> query = entityManager.createQuery("SELECT new Person(p.firstName, p.lastName) FROM Person p", Person.class);
@@ -92,8 +88,7 @@ public class PersonDAO {
 
 
     public static void delete(Person person){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
-        EntityTransaction tx = entityManager.getTransaction();
+       EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
             entityManager.remove(person);
@@ -110,7 +105,6 @@ public class PersonDAO {
     }
 
     public static void deleteByIdV2(Integer id){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -126,7 +120,6 @@ public class PersonDAO {
 
 
     public static void update(Person personToUpdate){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
@@ -139,7 +132,6 @@ public class PersonDAO {
     }
 
     public static List<Person> findByLastName(String lastName){
-        EntityManager entityManager = EntityManagerSingleton.getEntityManager();
 
         Query query  = entityManager.createQuery("SELECT p FROM Person p WHERE p.lastName = :lastName");
         query.setParameter("lastName", lastName);
