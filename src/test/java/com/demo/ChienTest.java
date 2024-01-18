@@ -20,5 +20,11 @@ public class ChienTest
         ChienDAO.save(medor);
     }
 
+    @Test
+    public void testCascade(){
+        Chien chien = ChienDAO.findById(1);
+        ChienDAO.delete(chien);
+    }
+
 
 }
