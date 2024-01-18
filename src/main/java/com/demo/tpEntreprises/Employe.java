@@ -16,7 +16,7 @@ public class Employe {
     private String prenom;
     private String nom;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="projets_employes",
             joinColumns = @JoinColumn(name="employe_id"),

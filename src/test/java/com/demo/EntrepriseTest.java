@@ -45,5 +45,10 @@ public class EntrepriseTest
         projetDAO.save(projet2);
     }
 
+    @Test
+    void testSuppressionCascade(){
+        Entreprise entreprise = entrepriseDAO.findById(1);
+        entrepriseDAO.delete(entreprise);
+    }
 
 }

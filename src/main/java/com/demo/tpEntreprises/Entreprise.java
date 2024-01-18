@@ -16,7 +16,7 @@ public class Entreprise {
     private String nom;
     private String adresse;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "entreprise_id")
     private List<Employe> employes = new ArrayList<>();
 
