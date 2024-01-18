@@ -35,5 +35,13 @@ public class SportTest
             System.out.println(p);
     }
 
+    @Test
+    void testLectureSportif(){
+        Person sportif = PersonDAO.findById(18);
+        sportif.getSports().forEach(
+                s -> System.out.println(s)
+        );
+    }
+
 
 }

@@ -52,4 +52,13 @@ public class Sport {
     public void addSportif(Person p){
         sportifs.add(p);
     }
+
+    @Override
+    public String toString() {
+        return "Sport{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", sportifs=" + sportifs +
+                '}';
+    }
 }
