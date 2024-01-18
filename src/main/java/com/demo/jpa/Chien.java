@@ -14,7 +14,7 @@ public class Chien {
     private String race;
     private int age;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE } )
     @JoinColumn(name="person_id")
     private Person maitre;
 

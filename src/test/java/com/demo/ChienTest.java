@@ -21,9 +21,18 @@ public class ChienTest
     }
 
     @Test
-    public void testCascade(){
+    public void testCascadeRemove(){
         Chien chien = ChienDAO.findById(1);
         ChienDAO.delete(chien);
+    }
+
+    @Test
+    public void testCascadePersist(){
+        Person xavier = new Person("Xavier", "Durand");
+
+        Chien chien = new Chien("Rocky", "Teckel", 5);
+        chien.setMaitre(xavier);
+        ChienDAO.save(chien);
     }
 
 
