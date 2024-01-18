@@ -15,7 +15,7 @@ public class Sport {
 
     private String nom;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Person> sportifs = new ArrayList<>();
 
     public Sport() {

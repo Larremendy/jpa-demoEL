@@ -43,5 +43,22 @@ public class SportTest
         );
     }
 
+    @Test
+    void testLazy(){
+
+
+//        Person p1 = PersonDAO.findById(16);
+//        p1.setAddress(AddressDAO.findById(1));
+//        PersonDAO.save(p1);
+
+        Sport foot = SportDAO.findById(1);
+        System.out.println("Affichage:");
+        System.out.println(foot.getNom());
+        List<Person> sportifs = foot.getSportifs();
+        System.out.println(sportifs.get(0).getFirstName());
+        System.out.println(sportifs.get(1).getFirstName());
+        System.out.println(sportifs.get(0).getAddress().getCity());
+    }
+
 
 }
