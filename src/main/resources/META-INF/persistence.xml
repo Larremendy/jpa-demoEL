@@ -7,9 +7,9 @@
     <persistence-unit name="demojpa"><!-- ATTENTION : le name du persisten-unit sera utilisé dans votre code Java -->
         <properties>
             <!-- database connection : database information -->
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/poe20231204demo" />
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/TpEnterprise_Jpa" />
             <property name="hibernate.connection.user" value="postgres" />
-            <property name="hibernate.connection.password" value="mypassword" />
+            <property name="hibernate.connection.password" value="Accords" />
 
             <!-- database type : postgreSQL -->
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />

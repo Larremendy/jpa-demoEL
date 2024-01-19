@@ -26,6 +26,9 @@ public class EntrepriseTest
         Employe employe3 = new Employe("Alex", "Dupont");
         employeDAO.save(employe3);
 
+        Employe employe4 = new Employe("Eric", "Larremdy");
+        employeDAO.save(employe4);
+
         Entreprise google = new Entreprise("Google");
         google.addEmploye(employe1);
         google.addEmploye(employe2);
